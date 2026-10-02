@@ -1,0 +1,40 @@
+name: Simulate async FIFO
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  icarus-sim:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Install Icarus Verilog
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y iverilog
+
+      - name: Lint (syntax/elaboration only)
+        run: make lint
+
+      - name: Run self-checking testbench
+        run: make sim | tee sim_output.log
+
+      - name: Fail the build if the testbench reported any errors
+        run: |
+          if grep -Eiq "FAIL|error_count *= *[1-9]|\$fatal" sim_output.log; then
+            echo "Testbench reported a failure — see sim_output.log"
+            exit 1
+          fi
+          echo "Testbench passed."
+
+      - name: Upload simulation log
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: sim-log
+          path: sim_output.log

@@ -1,0 +1,43 @@
+# ---- Vivado ----
+.Xil/
+*.jou
+*.log
+*.str
+*.pb
+.srcs/
+.runs/
+.sim/
+.cache/
+.hw/
+.ip_user_files/
+*.wdb
+*.xpr
+vivado*.jou
+vivado*.log
+vivado_pid*.str
+webtalk*.log
+webtalk*.jou
+*.backup.log
+*.backup.jou
+usage_statistics_webtalk.html
+
+# ---- Icarus Verilog / general sim ----
+*.vvp
+sim_build/
+obj_dir/
+*.o
+
+# Keep the shipped reference waveform, ignore any regenerated ones
+*.vcd
+!async_fifo.vcd
+
+# ---- GTKWave ----
+*.gtkw.bak
+
+# ---- OS / editor junk ----
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+.vscode/
+*~

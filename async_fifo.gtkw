@@ -1,0 +1,39 @@
+[*]
+[*] GTKWave Save File for async_fifo.vcd
+[*] Signals grouped by clock domain: write side, read side, internal pointers/flags
+[dumpfile] "async_fifo.vcd"
+[savefile] "async_fifo.gtkw"
+[timestart] 0
+[size] 1200 800
+[pos] -1 -1
+*-16.000000 0 -1 0
+[sst_width] 250
+[signals_width] 220
+[sst_expanded] 1
+
+-Write domain
+tb_async_fifo.wr_clk
+tb_async_fifo.wr_rst
+tb_async_fifo.wr_en
+tb_async_fifo.din[7:0]
+tb_async_fifo.full
+
+-Read domain
+tb_async_fifo.rd_clk
+tb_async_fifo.rd_rst
+tb_async_fifo.rd_en
+tb_async_fifo.dout[7:0]
+tb_async_fifo.empty
+
+-Internal pointers (gray code)
+tb_async_fifo.dut.wr_ptr_gray[3:0]
+tb_async_fifo.dut.rd_ptr_gray[3:0]
+tb_async_fifo.dut.wr_ptr_gray_sync[3:0]
+tb_async_fifo.dut.rd_ptr_gray_sync[3:0]
+
+-Scoreboard / checking
+tb_async_fifo.error_count
+tb_async_fifo.check_pass
+
+[pattern_trace] 1
+[pattern_trace] 0
